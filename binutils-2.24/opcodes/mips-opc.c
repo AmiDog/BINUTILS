@@ -341,7 +341,7 @@ decode_mips_operand (const char *p)
 
    Because of the lookup algorithm used, entries with the same opcode
    name must be contiguous.
- 
+
    Many instructions are short hand for other instructions (i.e., The
    jal <register> instruction is short for jalr <register>).  */
 
@@ -1073,8 +1073,23 @@ const struct mips_opcode mips_builtin_opcodes[] =
 {"floor.l.s",		"D,S",		0x4600000b, 0xffff003f, WR_1|RD_2|FP_S|FP_D,	0,		I3_33,		0,	0 },
 {"floor.w.d",		"D,S",		0x4620000f, 0xffff003f, WR_1|RD_2|FP_S|FP_D,	0,		I2,		0,	SF },
 {"floor.w.s",		"D,S",		0x4600000f, 0xffff003f, WR_1|RD_2|FP_S,		0,		I2,		0,	0 },
-{"haddiu",		"t,r,j",	0x64000000, 0xfc000000, WR_1|RD_2,		0,		I1,		0,	0 },
-{"haddu",		"d,v,t",	0x0000002d, 0xfc0007ff, WR_1|RD_2|RD_3,		0,		I1,		0,	0 },
+/* HALF-MIPS -> */
+{"hadd",			"d,v,t",	0x00000030, 0xfc0007ff,	WR_1|RD_2|RD_3,		0,		I1,		0,	0 },
+{"haddu",		"d,v,t",	0x00000031, 0xfc0007ff,	WR_1|RD_2|RD_3,		0,		I1,		0,	0 },
+{"hsub",			"d,v,t",	0x00000032, 0xfc0007ff,	WR_1|RD_2|RD_3,		0,		I1,		0,	0 },
+{"hsubu",		"d,v,t",	0x00000033, 0xfc0007ff,	WR_1|RD_2|RD_3,		0,		I1,		0,	0 },
+{"hand",			"d,v,t",	0x00000034, 0xfc0007ff,	WR_1|RD_2|RD_3,		0,		I1,		0,	0 },
+{"hor",			"d,v,t",	0x00000035, 0xfc0007ff,	WR_1|RD_2|RD_3,		0,		I1,		0,	0 },
+{"hxor",			"d,v,t",	0x00000036, 0xfc0007ff,	WR_1|RD_2|RD_3,		0,		I1,		0,	0 },
+{"hnor",			"d,v,t",	0x00000037, 0xfc0007ff,	WR_1|RD_2|RD_3,		0,		I1,		0,	0 },
+{"hslt",			"d,v,t",	0x0000003a, 0xfc0007ff,	WR_1|RD_2|RD_3,		0,		I1,		0,	0 },
+{"hsltu",		"d,v,t",	0x0000003b, 0xfc0007ff,	WR_1|RD_2|RD_3,		0,		I1,		0,	0 },
+{"haddi",		"t,r,j",	0x60000000, 0xfc000000,	WR_1|RD_2,		0,		I1,		0,	0 },
+{"haddiu",		"t,r,j",	0x64000000, 0xfc000000,	WR_1|RD_2,		0,		I1,		0,	0 },
+{"hslti",		"t,r,j",	0x68000000, 0xfc000000,	WR_1|RD_2,		0,		I1,		0,	0 },
+{"hsltiu",		"t,r,j",	0x6c000000, 0xfc000000,	WR_1|RD_2,		0,		I1,		0,	0 },
+{"handi",		"t,r,i",	0x70000000, 0xfc000000,	WR_1|RD_2,		0,		I1,		0,	0 },
+/* <- HALF-MIPS */
 {"hibernate",		"",		0x42000023, 0xffffffff,	0, 			0,		V1,		0,	0 },
 {"hypcall",		"",		0x42000028, 0xffffffff, TRAP,			0,		0,		IVIRT,	0 },
 {"hypcall",		"+J",		0x42000028, 0xffe007ff, TRAP,			0,		0,		IVIRT,	0 },
@@ -2035,7 +2050,7 @@ const struct mips_opcode mips_builtin_opcodes[] =
 {"qmtc2",		"t,+6",		0x48a00000, 0xffe007ff,	RD_1|WR_C2,		0,		EE,		0,	0 },
 {"qmtc2.i",		"t,+6",		0x48a00001, 0xffe007ff,	RD_1|WR_C2,		0,		EE,		0,	0 },
 {"qmtc2.ni",		"t,+6",		0x48a00000, 0xffe007ff,	RD_1|WR_C2,		0,		EE,		0,	0 },
-/* Coprocessor 3 move/branch operations overlap with MIPS IV COP1X 
+/* Coprocessor 3 move/branch operations overlap with MIPS IV COP1X
    instructions, so they are here for the latters to take precedence.  */
 {"bc3f",		"p",		0x4d000000, 0xffff0000,	RD_CC|CBD,		0,		I1,		0,	IOCT|IOCTP|IOCT2|EE },
 {"bc3fl",		"p",		0x4d020000, 0xffff0000,	RD_CC|CBL,		0,		I2|T3,		0,	IOCT|IOCTP|IOCT2|EE },
