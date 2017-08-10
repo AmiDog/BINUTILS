@@ -1089,6 +1089,9 @@ const struct mips_opcode mips_builtin_opcodes[] =
 {"hslti",		"t,r,j",	0x68000000, 0xfc000000,	WR_1|RD_2,		0,		I1,		0,	0 },
 {"hsltiu",		"t,r,j",	0x6c000000, 0xfc000000,	WR_1|RD_2,		0,		I1,		0,	0 },
 {"handi",		"t,r,i",	0x70000000, 0xfc000000,	WR_1|RD_2,		0,		I1,		0,	0 },
+{"hori",			"t,r,i",	0x74000000, 0xfc000000,	WR_1|RD_2,		0,		I1,		0,	0 },
+{"hxori",		"t,r,i",	0x78000000, 0xfc000000,	WR_1|RD_2,		0,		I1,		0,	0 },
+{"hlui",			"t,u",		0x7c000000, 0xffe00000,	WR_1,			0,		I1,		0,	0 },
 /* <- HALF-MIPS */
 {"hibernate",		"",		0x42000023, 0xffffffff,	0, 			0,		V1,		0,	0 },
 {"hypcall",		"",		0x42000028, 0xffffffff, TRAP,			0,		0,		IVIRT,	0 },

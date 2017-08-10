@@ -25,3 +25,6 @@ test_imm:
 	hslti $2,$2,4
 	hsltiu $2,$2,4
 	handi $2,$2,4
+	hori $2,$2,4
+	hxori $2,$2,4
+	hlui $2,4
