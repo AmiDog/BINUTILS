@@ -6,6 +6,8 @@
 	../binutils-2.24/configure --prefix=/usr/local/halfmips --target=mipsel-unknown-elf --program-prefix=halfmips- --with-float=soft
 	../binutils-2.35/configure --prefix=/usr/local/halfmips --target=mipsel-unknown-elf --program-prefix=halfmips- --with-float=soft
 
+	../binutils-2.35/configure --prefix=/usr/local/mipsel --target=mipsel-unknown-elf --with-float=soft
+
 	make
 
 	make install
