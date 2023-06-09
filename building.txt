@@ -8,6 +8,8 @@
 
 	../binutils-2.35/configure --prefix=/usr/local/mipsel --target=mipsel-unknown-elf --with-float=soft
 
+	../binutils-2.40/configure --prefix=/usr/local/mipsel --target=mipsel-unknown-elf --with-float=soft
+
 	make
 
 	make install
