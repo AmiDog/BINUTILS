@@ -1,15 +1,23 @@
 
-	mkdir builddir
+	mkdir -p builddir-2.24; cd builddir-2.24/
 
-	cd builddir/
-
+	../binutils-2.24/configure --prefix=/usr/local/mipsel --target=mipsel-unknown-elf --with-float=soft
 	../binutils-2.24/configure --prefix=/usr/local/halfmips --target=mipsel-unknown-elf --program-prefix=halfmips- --with-float=soft
-	../binutils-2.35/configure --prefix=/usr/local/halfmips --target=mipsel-unknown-elf --program-prefix=halfmips- --with-float=soft
+
+	make; make install
+
+
+	mkdir -p builddir-2.35; cd builddir-2.35/
 
 	../binutils-2.35/configure --prefix=/usr/local/mipsel --target=mipsel-unknown-elf --with-float=soft
+	../binutils-2.35/configure --prefix=/usr/local/halfmips --target=mipsel-unknown-elf --program-prefix=halfmips- --with-float=soft
+
+	make; make install
+
+
+	mkdir -p builddir-2.40; cd builddir-2.40/
 
 	../binutils-2.40/configure --prefix=/usr/local/mipsel --target=mipsel-unknown-elf --with-float=soft
+	../binutils-2.40/configure --prefix=/usr/local/halfmips --target=mipsel-unknown-elf --program-prefix=halfmips- --with-float=soft
 
-	make
-
-	make install
+	make; make install
