@@ -5251,6 +5251,15 @@ size_input_section
 
 	      if (dot + TO_ADDR (i->size) > end)
 		{
+      printf("Overflow! %08lx -> %08lx overflows %08lx | %08lx, %08lx | new length %08lx\n",
+        dot - alignment_needed, dot + TO_ADDR (i->size), end,
+        output_section_statement->region->origin, output_section_statement->region->length,
+        dot - alignment_needed - output_section_statement->region->origin);
+      /* Shrink output region to prevent other sections from being added to it. I.e. do not mix .text and .data.  */
+      bfd_size_type new_length = dot - alignment_needed - output_section_statement->region->origin;
+      if (new_length < output_section_statement->region->length)
+        output_section_statement->region->length = new_length;
+
 		  if (i->flags & SEC_LINKER_CREATED)
 		    einfo (_("%F%P: Output section `%pA' not large enough for "
 			     "the linker-created stubs section `%pA'.\n"),
